@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Blogger {
   
-  @GeneratedValue
-  @Id
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
   private int age;
   @OneToMany(mappedBy = "blogger")
   private List<Story> stories;
   
-  private Blogger() {}
+  public Blogger() {}
 
   public long getId() {
     return id;
